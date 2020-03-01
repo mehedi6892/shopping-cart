@@ -1,82 +1,155 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-   <title>Shopping Cart</title>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
-   <link href="style.css" rel="stylesheet">
-</head>
+   <head>
+      <title>Shopping Cart</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+      <link href="style.css" rel="stylesheet">
+   </head>
 
-<body>
-
-   <section>
-      <div class="container">
-         <div class="cart">
-            <div class="col-md-12 col-lg-10 mx-auto">
-               <div class="cart-item">
-                  <div class="row">
-                     <div class="col-md-7 center-item">
-                        <img src="images/product-1.png" alt="">
-                        <h5>iPhone 11 128GB Black</h5>
-                     </div>
-
-                     <div class="col-md-5 center-item">
-                        <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+   <body>
+      <section>
+         <div class="container">
+            <div class="cart">
+               <div class="col-md-12 col-lg-10 mx-auto">
+                  <div class="cart-item">
+                     <div class="row">
+                        <div class="col-md-7 center-item">
+                           <img src="images/product-1.png" alt="">
+                           <h5>iPhone 11 128GB Black</h5>
                         </div>
-                        <h5>$1219</h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
-                     </div>
-                  </div>
-               </div>
 
-               <div class="cart-item">
-                  <div class="row">
-                     <div class="col-md-7 center-item mx-auto">
-                        <img src="images/product-2.png" alt="">
-                        <h5>iPhone 11 Silicone Case - Black</h5>
-                     </div>
-                     <div class="col-md-5 center-item">
-                        <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
-
+                        <div class="col-md-5 center-item">
+                           <div class="input-group number-spinner">
+                              <button id="phoneMinusBtn" class="btn btn-default">
+                                 <i class="fas fa-minus"></i>
+                              </button>
+                              <input id="phoneCartNo" type="text" class="form-control text-center" value="1">
+                              <button id="phonePlusBtn" class="btn btn-default">
+                                 <i class="fas fa-plus"></i>
+                              </button>
+                           </div>
+                           <h5>$<span id="phoneCart">1219</span> </h5>
+                           <img src="images/remove.png" alt="" class="remove-item">
                         </div>
-                        <h5>$59</h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
-               </div>
 
-               <div class="cart-item">
-                  <div class="row">
+                  <div class="cart-item">
+                     <div class="row">
+                        <div class="col-md-7 center-item mx-auto">
+                           <img src="images/product-2.png" alt="">
+                           <h5>iPhone 11 Silicone Case - Black</h5>
+                        </div>
 
-                     <div class="col-md-8">
-                        <h5>Subtotal: </h5>
-                        <h5>Tax:</h5>
-                        <h5>Total:</h5>
-                     </div>
-
-                     <div class="col-md-4 status">
-                        <h5>$1,278</h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <div class="col-md-5 center-item">
+                           <div class="input-group number-spinner">
+                              <button id="caseMinusBtn" class="btn btn-default">
+                                 <i class="fas fa-minus"></i>
+                              </button>
+                              <input id="caseCartNo" type="text" class="form-control text-center" value="1">
+                              <button id="casePlusBtn" class="btn btn-default">
+                                 <i class="fas fa-plus"></i>
+                              </button>
+                           </div>
+                           <h5>$ <span id="caseCart">59</span></h5>
+                           <img src="images/remove.png" alt="" class="remove-item">
+                        </div>
                      </div>
                   </div>
-               </div>
-               <div class="col-md-12 pt-4 pb-4">
-                  <button type="button" class="btn btn-success check-out">Check Out</button>
+
+                  <div class="cart-item">
+                     <div class="row">
+                        <div class="col-md-8">
+                           <h5>Subtotal: </h5>
+                           <h5>Tax:</h5>
+                           <h5>Total:</h5>
+                        </div>
+
+                        <div class="col-md-4 status">
+                           <h5>$ <span id="subTotal">00</span></h5>
+                           <h5>$0</h5>
+                           <h5>$ <span id="totalAmount">00</span></h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-12 pt-4 pb-4">
+                     <button type="button" class="btn btn-success check-out">Check Out</button>
+                  </div>
                </div>
             </div>
          </div>
-      </div>
-   </section>
-</body>
+      </section>
 
+      <script>
+         //Phone-item Plus button event handler  
+         const phonePlusBtnCheck = document.getElementById("phonePlusBtn");
+         phonePlusBtnCheck.addEventListener("click", function(){
+            phoneTextUpdate("phoneCartNo",1);
+            const phoneCart = phoneCartUpdate("phoneCart", 1219);
+            const caseCart = document.getElementById("caseCart").innerText;
+            const caseCartNumber = parseFloat(caseCart);
+            document.getElementById("subTotal").innerText = phoneCaseUpdate(phoneCart,caseCartNumber);
+            finalAmountCheck("totalAmount", "subTotal");
+         })
+         //Case-item Plus button event handler 
+         const casePlusBtnCheck = document.getElementById("casePlusBtn");
+         casePlusBtnCheck.addEventListener("click", function(){
+            phoneTextUpdate("caseCartNo",1);
+            const caseCart = phoneCartUpdate("caseCart", 59);
+            const phoneCart = document.getElementById("phoneCart").innerText;
+            const phoneCartNumber = parseFloat(phoneCart);
+            document.getElementById("subTotal").innerText = phoneCaseUpdate(caseCart,phoneCartNumber);
+            finalAmountCheck("totalAmount", "subTotal");
+         })
+         //Phone-item Minus button event handler 
+         const phoneMinusBtnCheck = document.getElementById("phoneMinusBtn");
+         phoneMinusBtnCheck.addEventListener("click", function(){
+            phoneTextUpdate("phoneCartNo",-1);
+            const phoneCart = phoneCartUpdate("phoneCart", -1219);
+            const caseCart = document.getElementById("caseCart").innerText;
+            const caseCartNumber = parseFloat(caseCart);
+            document.getElementById("subTotal").innerText = phoneCaseUpdate(phoneCart,caseCartNumber);
+            finalAmountCheck("totalAmount", "subTotal");
+         })
+         //Case-item Minus button event handler 
+         const caseMinusBtnCheck = document.getElementById("caseMinusBtn");
+         caseMinusBtnCheck.addEventListener("click", function(){
+            phoneTextUpdate("caseCartNo",-1);
+            const caseCart = phoneCartUpdate("caseCart", -59);
+            const phoneCart = document.getElementById("phoneCart").innerText;
+            const phoneCartNumber = parseFloat(phoneCart);
+            document.getElementById("subTotal").innerText = phoneCaseUpdate(caseCart,phoneCartNumber);
+            finalAmountCheck("totalAmount", "subTotal");
+         })
+         //function-area-start---
+         function phoneTextUpdate(id, givenNumber){
+            const getNumber = document.getElementById(id).value;
+            const getNumberDigit = parseFloat(getNumber);
+            const totalAmount = getNumberDigit + givenNumber;
+            document.getElementById(id).value = totalAmount;
+            return totalAmount;
+         }
+         function phoneCartUpdate(id, givenNumber){
+            const getNumber = document.getElementById(id).innerText;
+            const getNumberDigit = parseFloat(getNumber);
+            const totalAmount = getNumberDigit + givenNumber;
+            document.getElementById(id).innerText = totalAmount;
+            return totalAmount;
+         }
+         function phoneCaseUpdate(firstNumber, secondNumber){
+            const totalAmount = firstNumber + secondNumber;
+            return totalAmount;
+
+         }
+         function finalAmountCheck(firstId, secondId){
+            document.getElementById(firstId).innerText = document.getElementById(secondId).innerText;
+            
+         }
+         
+      </script>
+   </body>
 </html>
